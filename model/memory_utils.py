@@ -1,14 +1,15 @@
 from .common_imports import *
 from .config import SiegelModelConfig
+import weakref
 
 class MemoryManager:
     """Shared memory optimization utilities with advanced caching."""
-    
+
     def __init__(self, config: SiegelModelConfig):
         self.config = config
         self._init_caches()
         self._init_metrics()
-        
+
     def _init_caches(self):
         """Initialize cache structures."""
         self.pattern_cache = LRUCache(self.config.cache_size)
