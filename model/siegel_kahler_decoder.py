@@ -420,7 +420,7 @@ class HyperbolicOutputProjection(nn.Module):
 
     def __init__(self, latent_dim: int, vocab_size: int, manifold: geoopt.manifolds.PoincareBall):
         super().__init__()
-        self.manifold = manifold
+        self.manifold = manifold  # manifold dışarıdan alınıyor
         self.vocab_proj = nn.Sequential(
             geoopt.ManifoldParameter(
                 torch.empty(latent_dim, latent_dim * 2),
