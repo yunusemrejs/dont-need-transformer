@@ -1,6 +1,8 @@
-from .common_imports import *
-from .config import SiegelModelConfig
 import weakref
+import torch
+from torch.utils.checkpoint import checkpoint
+from typing import Any, Callable, Dict, Tuple
+from .config import SiegelModelConfig
 
 class MemoryManager:
     """Shared memory optimization utilities with advanced caching."""
@@ -25,7 +27,6 @@ class MemoryManager:
             'memory_saved': 0
         }
 
-    @torch.jit.script_method
     def _compute_cache_key(self, args: Tuple) -> str:
         """Compute cache key for given arguments."""
         key_parts = []
