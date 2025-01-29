@@ -25,7 +25,7 @@ class EnhancedSiegelKahlerDecoder(nn.Module):
         self.use_gradient_checkpointing = config.use_gradient_checkpointing
 
         # Siegel manifold ve metrik tanımları
-        self.manifold = geoopt.manifolds.PoincareBall(k=config.latent_dim//2)
+        self.manifold = geoopt.manifolds.PoincareBall()
         self.metric = geoopt.Metric("siegel")
 
         # Hiperbolik token embedding
